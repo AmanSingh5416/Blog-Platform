@@ -1,0 +1,11 @@
+body{text-align: center;}
+.error{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#error_link{
+    text-decoration: none;
+    font-size: 1.5rem;
+}
