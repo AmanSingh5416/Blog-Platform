@@ -11,7 +11,7 @@ app.use(express.json());
 
 // enable CORS for all routes
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'http://localhost:5173', // allow React to send requests to the server
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true // allow cookies/headers if needed
 }));
@@ -31,8 +31,8 @@ app.post('/login', async (req, res) => {
     const doc = await User.findOne({email: email});
     if (!doc) res.json({user: 0, msg: 'Email does not exist.'});
     else{
-        const isMatch = await bcrypt.compare(password, doc.password);
-        if (isMatch) res.json({_id: doc._id});
+        const isMatch = await bcrypt.compare(password, doc.password); // returns a promise
+        if (isMatch) res.json({_id: doc._id, user: 1});
         else res.json({user: 1 , msg: 'Password is wrong.'});
     }
 });

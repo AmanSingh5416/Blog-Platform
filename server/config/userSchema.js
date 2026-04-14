@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Email is required.'],
         unique: true,
         lowercase: true,
+        // lowercase: [true, 'Email should be in lowercase.'] -> INCORRECT
         minLength: [8, 'Email should be atleast 8 characters long.'],
         maxLength: [40, 'Email should be atmax 40 characters long.']
     },
